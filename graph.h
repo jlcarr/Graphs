@@ -35,7 +35,7 @@ class graph{
 	
 		//Breadth First Search Algorithm to get optimal path
 		//Given start vertex and end vertex returns path as a list of sequential vertices
-		list<Tkey> getPath(Tkey start, Tkey finish){
+		list<Tkey> getPathBFS(Tkey start, Tkey finish){
 			//unordered set "searched" to quickly check which vertices don't need to be added to the search queue
 			unordered_set<Tkey> searched;
 			//The search queue.
