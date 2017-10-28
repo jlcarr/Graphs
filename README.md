@@ -7,6 +7,10 @@ A C++ library for graph theory computations.
 * Constant time access to nodes and edges.
 * Simple design and usage.
 
+### Graph Theory Algorithms Included
+* BFS Path Finding
+* Tarjan's Strongly Connected Components Algorithm
+
 ## Installation
 None required; simply dowload the library, then include it in your main.cpp
 
