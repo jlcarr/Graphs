@@ -14,13 +14,14 @@
 using namespace std;
 
 
+//unweighted directed graph class
 template <class Tkey>
 class graph{
 	public:
-		//Vertices are an unordered map from their keys to the data they hold.
+		//Vertices are an unordered set of keys.
 		unordered_set<Tkey> V;
-		//Edges are unordered maps from the keys representing the tail vertices, to the vertices lead to
-		//which are represented as an unordered map leading to their edge data.
+		//Edges are unordered maps from the keys representing the tail vertices,
+		//to unordered sets of keys representing the head vertices.
 		unordered_map<Tkey, unordered_set<Tkey>> E;
 	
 	
@@ -163,10 +164,12 @@ class graph{
 };
 
 
+
+//weighted directed graph class
 template <class Tkey, class TEdgeWeight>
 class weighted_graph{
 	public:
-		//Vertices are an unordered map from their keys to the data they hold.
+		//Vertices are an unordered set of keys.
 		unordered_set<Tkey> V;
 		//Edges are unordered maps from the keys representing the tail vertices, to the vertices lead to
 		//which are represented as an unordered map leading to their edge data.
