@@ -8,7 +8,7 @@ A C++ library for graph theory computations.
 * Simple design and usage.
 
 ### Graph Theory Algorithms Included
-* BFS Path Finding
+* Breadth First Search Path Finding
 * Tarjan's Strongly Connected Components Algorithm
 
 ## Installation
