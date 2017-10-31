@@ -185,7 +185,6 @@ class hash<edge<Tkey>> {
 };
 
 
-
 //directed graph with edge weights class
 template <class Tkey, class TEdgeWeight>
 class weighted_graph: public graph<Tkey>{
@@ -214,6 +213,46 @@ class weighted_graph: public graph<Tkey>{
 				cout << *v << " -> ";
 				for(auto e = this->E[*v].begin(); e != this->E[*v].end(); ++e){
 					cout << *e << "(" << weight(*v, *e) << "), ";
+				}
+				cout << "\n";
+			}
+		}
+};
+
+
+//directed graph with both edge and vertex data class
+template <class Tkey, class TVertex, class TEdge>
+class data_graph: public graph<Tkey>{
+	public:
+		//Edges are unordered maps from the keys representing the tail vertices, to the vertices lead to
+		//which are represented as an unordered map leading to their edge data.
+		unordered_map<edge<Tkey>, TEdge> EDataSet;
+		unordered_map<Tkey, TVertex> VDataSet;
+	
+		//add vertex and edges methods
+		void addVertex(Tkey key, TVertex data){
+			this->V.insert(key);
+			VDataSet[key] = data;
+		}
+		void addEdge(Tkey tail, Tkey head, TEdge data){
+			this->E[tail].insert(head);
+			EDataSet[edge<Tkey>{tail, head}] = data;
+		}
+	
+		//get data methods
+		TVertex Vdata(Tkey key){
+			return VDataSet[key];
+		}
+		TEdge Edata(Tkey tail, Tkey head){
+			return EDataSet[edge<Tkey>{tail, head}];
+		}
+	
+		//Print the graph in edge list form with weights
+		void print(){
+			for(auto v = this->V.begin(); v != this->V.end(); ++v){
+				cout << *v << "(" << Vdata(*v) << ") -> ";
+				for(auto e = this->E[*v].begin(); e != this->E[*v].end(); ++e){
+					cout << *e << "(" << Edata(*v, *e) << "), ";
 				}
 				cout << "\n";
 			}
